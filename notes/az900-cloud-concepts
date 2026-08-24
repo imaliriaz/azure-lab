@@ -1,0 +1,43 @@
+# Shared Responsibility Model — my notes
+
+## Cloud computing — the basics
+Computing services (compute, storage, network, AI) delivered remotely instead of
+on my own premises. Key traits: on-demand, pay-as-you-go.
+
+## Deployment models
+- **Private cloud**: on-prem infra, fully my responsibility (cost + security).
+- **Public cloud**: provider manages hardware/infra, I manage the rest depending
+  on service model (IaaS/PaaS/SaaS).
+- **Hybrid cloud**: mix of private + public, connected together (e.g. VPN /
+  ExpressRoute). Example: Entra Connect syncing our on-prem AD to Azure AD.
+  Hybrid is about WHERE infra physically sits — not about who secures what.
+
+## Service models (IaaS / PaaS / SaaS)
+Responsibility shifts along a spectrum — as you move from IaaS to SaaS,
+the provider takes on more, I take on less.
+
+- **IaaS**: provider gives raw infra (VMs, storage, network). I manage OS,
+  patching, apps, data.
+  - *My examples*: SIEM VM (I patch the OS myself), our other exi VMs.
+- **PaaS**: provider gives infra + OS + runtime. I manage only my app + data.
+  - *Example I don't have yet*: Azure Sentinel, Azure SQL Database — if we
+    move to these, provider patches the underlying platform.
+- **SaaS**: provider manages everything (infra, OS, app, updates). I just use
+  it and own my data.
+  - *My example*: Exchange Online / Microsoft 365.
+
+## Shared Responsibility Model (separate from deployment model!)
+Applies to any cloud service, regardless of IaaS/PaaS/SaaS or deployment model.
+Splits into:
+- **Security OF the cloud** (Microsoft, always): physical datacenters,
+  hardware, network infra, physical security.
+- **Security IN the cloud** (me, always): my data, identity/access management,
+  device security.
+- **The middle layer** (OS, network controls, apps) shifts depending on
+  IaaS/PaaS/SaaS — more mine in IaaS, more Microsoft's in SaaS.
+
+Rule to not confuse this with hybrid cloud: shared responsibility answers
+"who secures which layer" — hybrid answers "where does the infra physically live."
+
+## Why this matters moving from on-prem CISO to cloud
+[apne 2-3 lines yahan likhna — kal ya jab time mile]
